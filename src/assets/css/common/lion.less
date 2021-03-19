@@ -1,0 +1,73 @@
+// 定义常用img尺寸
+.img(@n, @i: 1) when (@i =< @n) {
+  .img-@{i}0 {
+    width: @i * 10px;
+    height: @i * 10px;
+  }
+  .img(@n, (@i + 1));
+}
+// 定义常用padding、margin
+.spacing(@n, @i: 1) when (@i =< @n) {
+  // 定义padding
+  .pd-@{i} {
+    padding: @i * 1px;
+  }
+  .pd-l-@{i} {
+    padding-left: @i * 1px;
+  }
+  .pd-r-@{i} {
+    padding-right: @i * 1px;
+  }
+  .pd-t-@{i} {
+    padding-top: @i * 1px;
+  }
+  .pd-b-@{i} {
+    padding-bottom: @i * 1px;
+  }
+  // 定义margin
+  .mg-@{i} {
+    margin: @i * 1px;
+  }
+  .mg-l-@{i} {
+    margin-left: @i * 1px;
+  }
+  .mg-r-@{i} {
+    margin-right: @i * 1px;
+  }
+  .mg-t-@{i} {
+    margin-top: @i * 1px;
+  }
+  .mg-b-@{i} {
+    margin-bottom: @i * 1px;
+  }
+  .spacing(@n, (@i + 1));
+}
+//定义常用颜色
+.c {
+  &-gray {
+    color: rgba(153, 153, 153, 1);
+  }
+}
+// 定义常用img尺寸
+.font(@n, @i: 10) when (@i =< @n) {
+  .f-@{i} {
+    font-size: @i * 1px;
+  }
+  .font(@n, (@i + 1));
+}
+// 运行函数
+.img(12);
+.spacing(50);
+.font(30);
+
+.a-link {
+  cursor: pointer;
+  &-blue {
+    color: rgba(60, 159, 205, 1);
+    text-decoration: none;
+  }
+  &-red {
+    color: rgba(183, 43, 240, 1);
+    text-decoration: none;
+  }
+}
