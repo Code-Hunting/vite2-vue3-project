@@ -12,9 +12,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
-    "lint": "eslint \"src/**/*.{js,vue}\"",
-    "lint-less": "stylelint \"src/**/*.{less}\""
+    "serve": "vite preview"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
