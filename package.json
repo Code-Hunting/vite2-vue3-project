@@ -12,10 +12,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "commit-msg": "git cz"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged & git cz",
+    "pre-commit": "lint-staged",
     "pre-push": ""
   },
   "lint-staged": {
