@@ -13,14 +13,8 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "installhusky": "husky install",
     "commit": "git cz"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged & commitlint -e $GIT_PARAMS",
-    "pre-push": ""
-  },
-  "lint-staged": {
-    "*.{js,vue}": "eslint"
   },
   "dependencies": {
     "gsap": "^3.6.0",
