@@ -12,11 +12,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
-    "commit-msg": "git cz"
+    "serve": "vite preview"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
+    "pre-commit": "lint-staged & git cz & commitlint -e $GIT_PARAMS",
     "pre-push": ""
   },
   "lint-staged": {
@@ -30,6 +29,8 @@
     "vue-router": "4.0.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-prettier": "^6.0.0",
