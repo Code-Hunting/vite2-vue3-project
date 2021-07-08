@@ -30,12 +30,12 @@ export default {
       gsap.effects.fade(".no-found-title");
       gsap.effects.fade(".no-found-desc");
       setTimeout(() => {
-        store.dispatch("asyncGetPageInfo");
+        store.dispatch("other/asyncGetPageInfo");
       }, 1000);
     });
     return {
       // 在 computed 函数中访问 getter
-      pageInfo: computed(() => store.getters.getPageInfo),
+      pageInfo: computed(() => store.getters["other/getPageInfo"]),
     };
   },
 };

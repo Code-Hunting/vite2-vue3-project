@@ -1,32 +1,12 @@
-import { createStore } from "vuex";
+import { createStore, createLogger } from "vuex";
+import other from "./modules/other";
 
-const store = createStore({
-  state: {
-    pageInfo: {
-      title: "404 Page NO Found",
-      desc: "Oh Something Wrong",
-    },
+const debug = process.env.NODE_ENV !== "production";
+
+export default createStore({
+  modules: {
+    other,
   },
-  mutations: {
-    setPageInfo(state, info) {
-      state.pageInfo = info || {};
-    },
-  },
-  actions: {
-    asyncGetPageInfo({ commit }) {
-      setTimeout(() => {
-        commit("setPageInfo", {
-          title: "Action Page NO Found",
-          desc: "Change From Action",
-        });
-      }, 1000);
-    },
-  },
-  getters: {
-    getPageInfo(state) {
-      return state.pageInfo;
-    },
-  },
+  strict: debug,
+  plugins: debug ? [createLogger()] : [],
 });
-
-export default store;
