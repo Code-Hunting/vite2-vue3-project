@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import routerConfig from "./router/config.js";
+import storeConfig from "./store";
 import App from "./App.vue";
 import "normalize.css"; //normalize.css
 
@@ -11,6 +12,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes: routerConfig,
 });
+//使用vuex
+app.use(storeConfig);
 //使用路由
 app.use(router);
 //挂载

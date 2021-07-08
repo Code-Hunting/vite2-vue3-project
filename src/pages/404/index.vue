@@ -1,18 +1,20 @@
 <template>
   <div class="main-container">
     <div class="page-container">
-      <h1 class="no-found-title">404 Not Found!</h1>
-      <p class="no-found-desc">您要找的资源不存在了</p>
+      <h1 class="no-found-title">{{ pageInfo.title }}</h1>
+      <p class="no-found-desc">{{ pageInfo.desc }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from "vue";
+import { onMounted, computed } from "vue";
+import { useStore } from "vuex";
 import { gsap } from "gsap";
 
 export default {
   setup() {
+    const store = useStore();
     onMounted(() => {
       // register the effect with GSAP:
       gsap.registerEffect({
@@ -20,14 +22,21 @@ export default {
         effect: (targets, config) => {
           return gsap.to(targets, { duration: config.duration, opacity: 0 });
         },
-        defaults: { duration: 2 }, //defaults get applied to any "config" object passed to the effect
+        defaults: { duration: 5 }, //defaults get applied to any "config" object passed to the effect
         extendTimeline: true, //now you can call the effect directly on any GSAP timeline to have the result immediately inserted in the position you define (default is sequenced at the end)
       });
 
       // // now we can use it like this:
       gsap.effects.fade(".no-found-title");
       gsap.effects.fade(".no-found-desc");
+      setTimeout(() => {
+        store.dispatch("asyncGetPageInfo");
+      }, 1000);
     });
+    return {
+      // 在 computed 函数中访问 getter
+      pageInfo: computed(() => store.getters.getPageInfo),
+    };
   },
 };
 </script>
